@@ -1,0 +1,46 @@
+<div class="row mt-5">
+    <div class="col-md-6 m-auto">
+        <div class="card card-body text-center">
+            <h1>Thông tin User</h1>
+            <% include ../partials/messages %>
+
+            <form method="post">
+                <table class="table">
+                    <tr>
+                        <td>Họ:</td>
+                        <td><%= user.firstName%></td>
+                    </tr>
+                    <tr>
+                        <td>Tên:</td>
+                        <td><%= user.surName%></td>
+                    </tr>
+                    <tr>
+                        <td>Email:</td>
+                        <td><%= user.loginName%></td>
+                    </tr>
+                    <tr>
+                        <td>Ngày sinh:</td>
+                        <td><%= user.birthday.toDateString()%></td>
+                    </tr>
+                    <tr>
+                        <td>Giới tính:</td>
+                        <td><%= user.gender%></td>
+                    </tr>
+                    <tr>
+                        <td>Trạng thái:</td>
+                        <% if (!user.isApprove) {%>
+                        <td>Chưa xác nhận</td>
+                        <% }else {%>
+                        <td>Đã xác nhận</td>
+                        <% for(var i=0;i< user.img.length; i++){%>
+                        <img width="30%" height="auto" src="/images/uploads/<%= user.img[i]%>">
+                        <%}}%>
+
+                    </tr>
+                </table>
+
+
+            </form>
+        </div>
+    </div>
+</div>

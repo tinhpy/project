@@ -1,5 +1,6 @@
 const express = require('express');
 const router = express.Router();
+const { ensureAuthenticated } = require('../config/auth');
 
 const reg = require('../controller/register');
 const log = require('../controller/login');
@@ -23,6 +24,7 @@ router.post('/resendVerify', reg.resendVerify);
 // Login
 router.post('/login', log.login);
 
+router.get('/info', ensureAuthenticated, (req,res)=>res.render('users/info', {user: req.user}));
 
 // Logout
 router.get('/logout', (req, res) => {
