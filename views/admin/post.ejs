@@ -1,0 +1,42 @@
+<h1 align="center">User Post</h1>
+
+<div class="row mt-5">
+    <div class="col-md-6 m-auto">
+        <div class="card card-body text-center">
+            <% include ../partials/messages %>
+
+            <% for(var i = 0; i < upload.length; i++){ %>
+            <form method="post">
+                <input type="hidden" readonly name="id" value="<%= upload[i]._id%>">
+                <table border="1">
+                    <tr>
+                        <td>Video</td>
+                        <td class="col-sm-3">
+                            <iframe height="200" width="350" allowfullscreen frameborder="0"
+                                    src="https://www.youtube.com/embed/<%= upload[i].embed %>"></iframe>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>User upload</td>
+                        <td ><input type="text" class="form-control" readonly value="<%= upload[i].user %>"></td>
+                    </tr>
+                    <tr>
+                        <td>Thể loại</td>
+                        <td><input type="text" class="form-control" readonly value="<%= upload[i].category %>"></td>
+                    </tr>
+
+                    <tr>
+                        <td>Subject</td>
+                        <td><input type="text" class="form-control" readonly value="<%= upload[i].subject %>"></td>
+                    </tr>
+                    <tr>
+                        <td>Mô tả</td>
+                        <td><input type="text" class="form-control" readonly value="<%= upload[i].description %>"></td>
+                    </tr>
+                </table>
+                <button type="submit"  class="btn btn-primary">Duyệt</button>
+            </form>
+        </div>
+    </div>
+</div>
+<% } %>
